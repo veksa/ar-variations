@@ -1,5 +1,5 @@
 <?
-namespace common\behaviors;
+namespace Veksa\Variation\behaviors;
 
 use Yii;
 use yii\base\Model;

@@ -2,7 +2,7 @@
 
 Contributions are **welcome** and will be fully **credited**.
 
-I accept contributions via Pull Requests on [Github](https://github.com/veksa/carrot-php-api).
+I accept contributions via Pull Requests on [Github](https://github.com/veksa/variation).
 
 
 ## Pull Requests

@@ -1,5 +1,5 @@
 {
-  "name": "veksa/ar-variation",
+  "name": "veksa/variation",
   "description": "ActiveRecord Variation Extension",
   "keywords": [
     "yii2",
@@ -12,7 +12,7 @@
     "translation",
     "i18n"
   ],
-  "homepage": "https://github.com/veksa/ar-variation",
+  "homepage": "https://github.com/veksa/variation",
   "type": "yii2-extension",
   "license": "MIT",
   "authors": [

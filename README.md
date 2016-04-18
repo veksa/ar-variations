@@ -1,12 +1,12 @@
 # ActiveRecord Variation Extension
 
-[![Stable Version](https://poser.pugx.org/veksa/ar-variation/v/stable)](https://packagist.org/packages/veksa/ar-variation)
-[![License](https://poser.pugx.org/veksa/ar-variation/license)](https://packagist.org/packages/veksa/ar-variation)
-[![Total Downloads](https://poser.pugx.org/veksa/ar-variation/downloads)](https://packagist.org/packages/veksa/ar-variation)
-[![Daily Downloads](https://poser.pugx.org/veksa/ar-variation/d/daily)](https://packagist.org/packages/veksa/ar-variation)
-[![Build Status](https://travis-ci.org/veksa/ar-variation.svg)](https://travis-ci.org/veksa/ar-variation)
-[![Code Climate](https://codeclimate.com/github/veksa/ar-variation/badges/gpa.svg)](https://codeclimate.com/github/veksa/ar-variation)
-[![Test Coverage](https://codeclimate.com/github/veksa/ar-variation/badges/coverage.svg)](https://codeclimate.com/github/veksa/ar-variation/coverage)
+[![Stable Version](https://poser.pugx.org/veksa/variation/v/stable)](https://packagist.org/packages/veksa/variation)
+[![License](https://poser.pugx.org/veksa/variation/license)](https://packagist.org/packages/veksa/variation)
+[![Total Downloads](https://poser.pugx.org/veksa/variation/downloads)](https://packagist.org/packages/veksa/variation)
+[![Daily Downloads](https://poser.pugx.org/veksa/variation/d/daily)](https://packagist.org/packages/veksa/variation)
+[![Build Status](https://travis-ci.org/veksa/variation.svg)](https://travis-ci.org/veksa/variation)
+[![Code Climate](https://codeclimate.com/github/veksa/variation/badges/gpa.svg)](https://codeclimate.com/github/veksa/variation)
+[![Test Coverage](https://codeclimate.com/github/veksa/variation/badges/coverage.svg)](https://codeclimate.com/github/veksa/variation/coverage)
 
 ##Install
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
@@ -14,13 +14,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require  veksa/ar-variation "~1.0"
+php composer.phar require  veksa/variation "~1.0"
 ```
 
 or add
 
 ```
-"veksa/ar-variation": "~1.0"
+"veksa/variation": "~1.0"
 ```
 
 to the require section of your `composer.json` file.
