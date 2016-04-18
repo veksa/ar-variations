@@ -1,5 +1,5 @@
 <?
-namespace Veksa\Variation\behaviors;
+namespace Veksa\Variation;
 
 use Yii;
 use yii\base\Model;
@@ -21,6 +21,8 @@ class VariationBehavior extends Behavior
      * @var array|string of related fields.
      */
     public $related;
+
+    public $relations;
 
     /**
      * @var \yii\db\ActiveQueryInterface[]|null list of all possible variation models.
@@ -160,7 +162,8 @@ class VariationBehavior extends Behavior
     public function events()
     {
         return [
-            Model::EVENT_AFTER_VALIDATE => 'afterValidate',
+            BaseActiveRecord::EVENT_BEFORE_VALIDATE => 'beforeValidate',
+            BaseActiveRecord::EVENT_AFTER_VALIDATE => 'afterValidate',
             BaseActiveRecord::EVENT_AFTER_INSERT => 'afterSave',
             BaseActiveRecord::EVENT_AFTER_UPDATE => 'afterSave'
         ];
@@ -333,6 +336,11 @@ class VariationBehavior extends Behavior
     public function getIsVariationModelsInitialized()
     {
         return !empty($this->_variationModels);
+    }
+
+    public function beforeValidate()
+    {
+        Model::loadMultiple($this->getVariationModels(), $this->relations, '');
     }
 
     /**
