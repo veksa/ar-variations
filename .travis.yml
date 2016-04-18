@@ -1,0 +1,26 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+  
+addons:
+    code_climate:
+        repo_token: bd38c805500b6f815311ad90d6aef657c71c4240d290b9a0395d8fe3a9bd2161
+
+before_script:
+  - travis_retry composer self-update && composer --version
+  - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.1"
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - travis_retry composer install --prefer-dist --no-interaction
+
+script:
+  - php vendor/bin/phpcs --standard=PSR2 --encoding=utf-8 src/
+  - phpunit --coverage-clover build/logs/clover.xml
+  - vendor/bin/test-reporter

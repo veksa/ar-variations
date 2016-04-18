@@ -1,0 +1,53 @@
+{
+  "name": "veksa/ar-variation",
+  "description": "ActiveRecord Variation Extension",
+  "keywords": [
+    "yii2",
+    "active",
+    "record",
+    "variation",
+    "many",
+    "many-to-many",
+    "many to many",
+    "translation",
+    "i18n"
+  ],
+  "homepage": "https://github.com/veksa/ar-variation",
+  "type": "yii2-extension",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alex Khijnij",
+      "email": "admin@devblog.pro",
+      "homepage": "https://devblog.pro",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "yiisoft/yii2": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*",
+    "squizlabs/php_codesniffer": "2.*",
+    "codeclimate/php-test-reporter": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Veksa\\Variation\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Veksa\\Variation\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
