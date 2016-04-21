@@ -65,8 +65,8 @@ class VariationBehavior extends Behavior
             } else {
                 foreach ($this->owner->{$this->relation} as $model) {
                     $findDefault = true;
-                    foreach ($this->related as $option => $related) {
-                        if ($model->{$option} != $related['value']) {
+                    foreach ($this->related as $related) {
+                        if ($model->{$related['option']} != $related['value']) {
                             $findDefault = false;
                         }
                     }
@@ -162,7 +162,6 @@ class VariationBehavior extends Behavior
     public function events()
     {
         return [
-            BaseActiveRecord::EVENT_BEFORE_VALIDATE => 'beforeValidate',
             BaseActiveRecord::EVENT_AFTER_VALIDATE => 'afterValidate',
             BaseActiveRecord::EVENT_AFTER_INSERT => 'afterSave',
             BaseActiveRecord::EVENT_AFTER_UPDATE => 'afterSave'
@@ -201,19 +200,21 @@ class VariationBehavior extends Behavior
         $owner = $this->owner;
         $relation = $owner->getRelation($this->relation);
 
-        $relatedArray = $this->related;
-        foreach ($relatedArray as $key => $related) {
-            /** @var ActiveRecord $relatedModelClass */
-            $relatedModelClass = $related['class'];
-            $query = $relatedModelClass::find();
-            if (isset($related['queryFilter'])) {
-                if (is_callable($related['queryFilter'])) {
-                    call_user_func($related['queryFilter'], $query);
-                } else {
-                    $query->andWhere($related['queryFilter']);
+        $relatedArray = (array)$this->related;
+        if ($relatedArray) {
+            foreach ($relatedArray as $key => $related) {
+                /** @var ActiveRecord $relatedModelClass */
+                $relatedModelClass = $related['class'];
+                $query = $relatedModelClass::find();
+                if (isset($related['queryFilter'])) {
+                    if (is_callable($related['queryFilter'])) {
+                        call_user_func($related['queryFilter'], $query);
+                    } else {
+                        $query->andWhere($related['queryFilter']);
+                    }
                 }
+                $relatedArray[$key]['models'] = $query->all();
             }
-            $relatedArray[$key]['models'] = $query->all();
         }
 
         $this->adjustModel($relation, $initialModels, array_values($relatedArray));
@@ -338,11 +339,6 @@ class VariationBehavior extends Behavior
         return !empty($this->_variationModels);
     }
 
-    public function beforeValidate()
-    {
-        Model::loadMultiple($this->getVariationModels(), $this->relations, '');
-    }
-
     /**
      * Handles owner 'afterValidate' event, ensuring variation models are validated as well
      * in case they have been fetched.
@@ -389,5 +385,7 @@ class VariationBehavior extends Behavior
             $variationModel->{$ownerReferenceAttribute} = $owner->getPrimaryKey();
             $variationModel->save(false);
         }
+
+        $owner->refresh();
     }
 }
